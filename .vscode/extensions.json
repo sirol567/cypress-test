@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "josefbiehler.cypress-fixture-intellisense",
+        "cliffsu.cypress-snippets",
+        "ryansong-cy-snippets.cy-snippets",
+        "caowei15701221.cypress-snippets-vscode"
+    ]
+}
