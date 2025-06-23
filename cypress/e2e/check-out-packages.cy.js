@@ -1,11 +1,3 @@
-// Helper to get iframe body
-Cypress.Commands.add('getIframeBody', (iframeSelector) => {
-  return cy
-    .get(iframeSelector)
-    .its('0.contentDocument.body')
-    .should('not.be.empty')
-    .then(cy.wrap);
-});
 
 describe('Login and Packages Interaction', () => {
   beforeEach(() => {
@@ -15,7 +7,7 @@ describe('Login and Packages Interaction', () => {
 
   it('logs in, checks engagement, package availability, and mocks Stripe payment', () => {
     // Step 1: Login
-    cy.get('[data-cy="header-login-button"]').should('be.visible').click();
+    cy.get('[data-cy="post-ad-button"]').should('be.visible').click();
     cy.url().should('include', '/login');
     cy.get('#email').type('admin@adfox.com');
     cy.get('#password').type('password');
@@ -66,21 +58,7 @@ describe('Login and Packages Interaction', () => {
                   cy.wait(1000)
                   cy.get('#payment_method-offline_advance\\ booking').check({ force: true });
                   cy.get('[data-cy="offline-payment-confirm"]').click();
-                  // cy.get('#payment_method-stripe').click();
-
-                  // Step 7: Mock Stripe Payment
-                  cy.wait(3000); // Wait for iframe to load
-                  // cy.frameLoaded('iframe[name^="__privateStripeFrame"]');
-
-                  // cy.iframe('iframe[name^="__privateStripeFrame"]').within(() => {
-                  //   cy.get('input[name="cardnumber"]').type('4242424242424242');
-                  //   cy.get('input[name="exp-date"]').type('1234');
-                  //   cy.get('input[name="cvc"]').type('123');
-                  //   cy.get('input[name="postal"]').type('12345');
-                  // });
-
-                  // Optionally submit the payment if there's a submit button
-                  // cy.get('[data-cy="submit-payment"]').click();
+                  cy.wait(3000)
                 } else {
                   cy.log(' No packages found ');
                 }
@@ -89,7 +67,7 @@ describe('Login and Packages Interaction', () => {
               }
             });
           } else {
-            cy.log(' My Packages submodule not available — possibly due to inactive packages');
+            cy.log(' My Packages submodule not available — packages disabled');
           }
         });
       } else {

@@ -38,7 +38,7 @@ describe('Category Selection and Filter Application', () => {
 
     it('should select a subcategory after selecting the main category', () => {
         // First select the category
-        cy.get('[data-cy="ad-category"]').then(($categories) => {
+        cy.get('[data-cy="ad-category"]' ,{timeout:10000}).then(($categories) => {
             const match = $categories.filter((i, el) => {
                 return el.innerText.trim() === CATEGORY_TO_CLICK;
             });

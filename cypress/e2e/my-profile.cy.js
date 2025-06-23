@@ -1,4 +1,4 @@
-describe('Login and Upload Profile Image', () => {
+describe('Login and update my profile', () => {
   beforeEach(() => {
     cy.visit('https://test.adfox.saasforest.com/');
   });

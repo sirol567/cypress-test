@@ -13,7 +13,7 @@ describe('Login and Proceed with search input from homepage', () => {
 
   it('logs in and search', () => {
     //  CHANGE THIS WORD TO ANYTHING YOU WANT TO SEARCH
-    const searchKeyword = 'smartphones';
+    const searchKeyword = 'zzzz';
 
     // Click on Login link
     cy.get('[data-cy="header-login-button"]')
